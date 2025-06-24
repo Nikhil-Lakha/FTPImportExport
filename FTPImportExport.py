@@ -56,12 +56,12 @@ with tab2:
                     if st.button(f"Download {file}", key=f"dl_{file}"):
                         buffer = BytesIO()
                         ftp.retrbinary(f"RETR {file}", buffer.write)
-buffer.seek(0)
+                        buffer.seek(0)
                         st.download_button(label=f"Click to download {file}",
                                            data=buffer,
                                            file_name=file)
                 ftp.quit()
             else:
-st.info("No files found on FTP server.")
+                st.info("No files found on FTP server.")
         except Exception as e:
             st.error(f"FTP connection failed: {e}")
