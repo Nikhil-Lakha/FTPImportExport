@@ -23,16 +23,16 @@ with tab1:
  
             uploaded_file = st.file_uploader("Choose a file to upload to FTP", key="upload")
             if uploaded_file is not None:
-file_name = uploaded_file.name
-                file_content = uploaded_file.read()
-                bio = BytesIO(file_content)
- 
-                if st.button("Upload File"):
-                    ftp.storbinary(f"STOR {file_name}", bio)
-                    st.success(f"File '{file_name}' uploaded successfully.")
-                    ftp.quit()
-        except Exception as e:
-            st.error(f"FTP connection failed: {e}")
+                file_name = uploaded_file.name
+                        file_content = uploaded_file.read()
+                        bio = BytesIO(file_content)
+         
+                        if st.button("Upload File"):
+                            ftp.storbinary(f"STOR {file_name}", bio)
+                            st.success(f"File '{file_name}' uploaded successfully.")
+                            ftp.quit()
+                except Exception as e:
+                    st.error(f"FTP connection failed: {e}")
  
 # ---------- EXPORT TAB ----------
 with tab2:
